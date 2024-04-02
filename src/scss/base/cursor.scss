@@ -1,0 +1,80 @@
+* {
+    // cursor: none !important;
+}
+.cursor {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 10000;
+    &__shadow {
+        will-change: transform;
+        transition: transform 0.1s linear 0s, box-shadow 1.3s linear 0s, color 1.3s linear 0s;
+        position: fixed;
+        width: rem(50);
+        height: rem(50);
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            // animation: rotate 5s infinite linear;
+            // @keyframes rotate {
+            //     0% {
+            //         transform: rotate(0deg);
+            //     }
+            //     100% {
+            //         transform: rotate(-360deg);
+            //     }
+            // }
+        }
+    }
+    &__pointer {
+        position: fixed;
+        width: rem(5);
+        height: rem(5);
+        top: 0;
+        left: 0;
+        will-change: transform;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary);
+            left: calc(50% - rem(5) / 2);
+            top: calc(50% - rem(5) / 2);
+            // border: 4px solid var(--secondary);
+            transition: background-color 0.3s ease 0s, transform 0.3s ease 0s, border-color 0.3s ease 0s;
+            border-radius: 50%;
+            // TODO FIX CIRCLE
+        }
+    }
+    &._hover {
+        .cursor__pointer::after {
+            transform: scale(0.8);
+            background-color: var(--text-accent);
+        }
+        .cursor__shadow::after {
+            transform: scale(0.8);
+            border-color: var(--text-accent);
+        }
+    }
+    &._active {
+        .cursor__pointer::after {
+            transition: all 0.05s ease 0s;
+            transform: scale(0.3);
+            background-color: var(--secondary);
+        }
+        .cursor__shadow::after {
+            box-shadow: 0 0 5px 5px var(--secondary), 0 0 5px 5px var(--secondary) inset;
+            border: 0;
+        }
+    }
+}

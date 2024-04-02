@@ -1,0 +1,40 @@
+.masonry {
+    margin: 0 auto;
+    &__wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        @include adaptiveValue('margin-bottom', 100, 40);
+    }
+    &__item {
+        position: absolute;
+        overflow: hidden;
+
+        & video {
+            object-fit: cover;
+        }
+    }
+
+    &__cover {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        transform: scale(0) translate3D(0, 0, 0);
+        opacity: 0;
+        transition: transform 1s, opacity 1s;
+    }
+    &__image {
+        display: none;
+    }
+    &__title {
+        position: relative;
+        // @include adaptiveValue('margin-bottom', 25, 10, 0);
+    }
+}
+
+.masonry__active .masonry__cover {
+    opacity: 1;
+    transform: scale(1) translate3D(0, 0, 0);
+}

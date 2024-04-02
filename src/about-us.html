@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"О нас"
+})
+@@include('html/_preloader.htm',{})
+
+<body>
+    <div class="wrapper">
+        <!-- <div id="follower"></div> -->
+        @@include('html/_header.htm',{})
+        <main class="page">
+
+            @@include('html/_breadcrumbs.htm,{
+            "page": "О нас"
+
+            })
+            @@include('html/_represent.htm',{})
+            @@include('html/_works.htm',{})
+        </main>
+        @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_popup-calculate.htm',{})
+    @@include('html/_js.htm',{})
+</body>
+
+</html>

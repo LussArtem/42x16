@@ -1,0 +1,17 @@
+.catalog__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.catalog__nav {
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}

@@ -1,0 +1,283 @@
+<style data-lp class="preloader-style">
+	.preloader {
+		pointer-events: none;
+		z-index: 1000;
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #e0dddd1e;
+		/* background: linear-gradient(45deg, rgb(21, 19, 21) 10%, rgb(90, 43, 96) 100%); */
+	}
+
+	.preloader * {
+		box-sizing: border-box;
+	}
+
+	.preloader__body {
+
+
+		/* padding: 0.93rem;
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			width: 280px;
+			height: 280px; */
+		/* background-blend-mode: multiply; */
+
+	}
+
+	.preloader__one,
+	.preloader__two {
+		position: absolute;
+		width: 50%;
+		height: 100%;
+		top: 0;
+
+		background-color: #161616;
+
+		transition: transform 0.55s;
+	}
+
+	.preloader__one {
+		left: 0;
+
+	}
+
+	.preloader__two {
+		left: 50%;
+
+	}
+
+	.loaded .preloader__two {
+		transform: translateX(100%);
+		border-left: 1px solid #ffffff;
+
+	}
+
+	.loaded .preloader__one {
+		transform: translateX(-100%);
+		border-right: 1px solid #ffffff;
+	}
+
+
+
+	.preloader__counter {
+		position: absolute;
+		color: #ffffff;
+		padding-top: 100%;
+		left: 50%;
+		bottom: 0;
+		font-family: sans-serif;
+		transition: bottom 1s;
+
+		font-weight: 900;
+		font-size: 35px;
+	}
+
+	.preloader__line span {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 1px;
+		height: 0%;
+		background-color: white;
+		z-index: 500000;
+		opacity: 1;
+
+
+		transition: height 1s;
+	}
+
+	.loaded .preloader__line span {
+		opacity: 0;
+	}
+
+	.loaded .preloader__counter {
+		opacity: 0;
+	}
+
+	/* .preload-animation .preloader__line span {
+			opacity: 1;
+		} */
+
+	.lock body {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
+
+	.wrapper {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	/* .loading .preloader {
+			opacity: 1;
+			visibility: visible;
+		} */
+
+	/* .download-done .preloader {
+			opacity: 0;
+			visibility: hidden;
+			 transition: all 0.5s ease 0s; 
+		} */
+
+	.loaded .wrapper {
+		transition: opacity 0.3s ease 0s;
+		opacity: 1;
+		visibility: visible;
+	}
+</style>
+
+
+<div id="preloader">
+	<!-- Скрипт прелоадера -->
+	<script id="preloader">
+		(function () {
+			const preloaderContainer = document.querySelector('#preloader');
+			let preloader, preloaderBody, showPecentLoad, showLineLoad;
+			const htmlDocument = document.documentElement;
+			const settings = {
+				// Задержка перед удалением прелоадера из html после окончания загрузки (1500)
+				delayRemovePreloader: 500,
+				// Функционал процентного отображения
+				counter: true,
+				// Функционал процентного отображения загрузки
+				line: true,
+				// Функционал кастомного отображения разных элементов (можно редактировать) – для включения перевести init в позицию true.
+				custom: {
+					init: true,
+					// Элементы, которые нужно добавлять в preloader__body
+					body: `<div class="preloader__one "></div>
+								<div class="preloader__two "></div>`
+				},
+			};
+			const checkBodyinterval = setInterval(() => {
+				if (document.body) {
+					clearInterval(checkBodyinterval);
+					const preloaderTemplate = `
+									<div class="preloader">
+										<div class="preloader__body">
+											${settings.custom.init ? settings.custom.body : ''}
+											${settings.counter ? '<div class="preloader__counter">0%</div>' : ''}
+											${settings.line ? '<div class="preloader__line"><span></span></div>' : ''}
+										</div>
+									</div>
+								`;
+					htmlDocument.insertAdjacentHTML("beforeend", preloaderTemplate);
+					preloader = document.querySelector('.preloader');
+					preloaderBody = preloader.querySelector('.preloader__body');
+					showPecentLoad = document.querySelector('.preloader__counter');
+					showLineLoad = document.querySelector('.preloader__line span');
+				}
+			}, 10);
+
+			const checkScriptsInterval = setInterval(() => {
+				const mainScriptsTag = document.querySelector('[data-main-script]');
+				if (mainScriptsTag) {
+					clearInterval(checkScriptsInterval);
+					let preloaderImages = document.querySelectorAll('source, video');
+					// console.log(preloaderImages)
+					const preloaderStyle = document.querySelector('.preloader-style');
+					if (preloaderImages.length) {
+
+						const intervalDelayCuonter = 4 * preloaderImages.length < 40 ? 4 * preloaderImages.length : 100;
+						let imagesLoadedCount = counter = progress = 0;
+						htmlDocument.classList.add('loading');
+						htmlDocument.classList.add('lock');
+						// FIX for mobile browsers
+						if (document.readyState === 'loading') {
+							console.log('document is already ready, just execute code here');
+							htmlDocument.classList.add('download-done')
+
+						} else if (document.readyState === 'complete') {
+							console.log('document was not ready, place code here');
+							htmlDocument.classList.add('download-done');
+
+						} else {
+							htmlDocument.classList.add('download-done');
+							console.log('Страница уже загружена и DOM дерево построено, но дополнительные ресурсы, такие как изображения и iframe (en-US), все ещё загружаются.')
+						}
+
+						preloaderImages.forEach(preloaderImage => {
+							const imgClone = document.createElement('img');
+							if (imgClone) {
+
+								imgClone.onload = imageLoaded;
+								imgClone.onerror = imageLoaded;
+								preloaderImage.dataset.srcset ? imgClone.src = preloaderImage.dataset.srcset : imgClone.src = preloaderImage.srcset;
+							}
+						});
+
+
+						function setValueProgress(progress) {
+							showPecentLoad ? showPecentLoad.innerText = `${progress}%` : null;
+							showPecentLoad ? showPecentLoad.style.bottom = `${progress}%` : null;
+							showLineLoad ? showLineLoad.style.height = `${progress}%` : null;
+						}
+						showPecentLoad ? setValueProgress(progress) : null;
+
+
+						function imageLoaded() {
+							imagesLoadedCount++;
+							// alert(imagesLoadedCount);
+							progress = Math.round((100 / preloaderImages.length) * imagesLoadedCount);
+							const intervalId = setInterval(() => {
+								counter >= progress ? clearInterval(intervalId) : setValueProgress(++counter);
+								counter >= 100 ? addLoadedClass() : null;
+								// alert(counter);
+							}, intervalDelayCuonter);
+						}
+
+						function addLoadedClass() {
+							if (this.isRun == true) return;
+
+							this.isRun = true;
+
+
+							let timer = setInterval(() => {
+
+								if (htmlDocument.closest('.download-done')) {
+
+									htmlDocument.classList.remove('lock');
+									htmlDocument.classList.remove('loading');
+									setTimeout(() => {
+
+										htmlDocument.classList.remove('download-done');
+										htmlDocument.classList.add('loaded');
+									}, settings.delayRemovePreloader >= 500 ? settings.delayRemovePreloader - 500 : 0);
+									const intervalRemovePreloader = setInterval(() => {
+
+										preloader.remove();
+										if (preloaderStyle) {
+											preloaderStyle.remove();
+										}
+										clearInterval(intervalRemovePreloader);
+										clearInterval(timer);
+										preloaderContainer.remove();
+										mainScriptsTag.removeAttribute('data-main-script');
+									}, settings.delayRemovePreloader);
+								} else {
+									return;
+								}
+							}, 300);
+						}
+					} else {
+
+
+						if (preloaderStyle) {
+							preloaderStyle.remove();
+						}
+						preloaderContainer.remove();
+					}
+				}
+			});
+		})();
+	</script>
+</div>

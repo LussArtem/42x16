@@ -1,0 +1,32 @@
+.order {
+    margin-bottom: 35px;
+    &__container {
+        position: relative;
+    }
+
+    &__body {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__title {
+        line-height: 1.04;
+        font-weight: 300;
+        color: var(--accent);
+        text-transform: uppercase;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    &__title span {
+        position: relative;
+        display: inline-block;
+    }
+
+    &__button {
+        margin: 0 auto;
+        // padding: 0 33px;
+        line-height: 1.4166666667;
+    }
+}

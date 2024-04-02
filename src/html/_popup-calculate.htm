@@ -1,0 +1,43 @@
+<div id="calculate" aria-hidden="true" class="popup"> <!-- catalog -->
+    <div class="popup__wrapper">
+        <div class="popup__content">
+            <div class="popup__order-print order-print">
+                <button aria-label="закрыть окно" data-close type="button" class="popup__close _icon-close"></button>
+                <div class="order-print__title">Представьтесь</div>
+                <form action="files/sendmail/sendmail.php" class="order-print__form">
+                    <!-- <select name="interest" data-class-modif="order-print__select">
+                        <option value="1" selected>Що вас цікавить? *</option>
+                        <option value="2">Пункт №2</option>
+                        <option value="3">Пункт №3</option>
+                        <option value="4">Пункт №4</option>
+                    </select>
+                    <select name="quantity" data-class-modif="order-print__select">
+                        <option value="1" selected>Кількість *</option>
+                        <option value="2">0-9</option>
+                        <option value="3">10-24</option>
+                        <option value="4">25-49</option>
+                        <option value="4">50-100</option>
+                    </select> -->
+                    <input type="text" name="name" placeholder="Имя *" class="input">
+                    <input type="phone" name="phone" placeholder="Телефон *" class="input">
+                    <input type="email" name="email" placeholder="Eмаіl *" class="input">
+                    <select name="main" data-class-modif="order-print__select">
+                        <option value="1" selected>Как вы оплатили Invite? *</option>
+                        <option value="2">Telegram</option>
+                        <option value="3">Перевод на карту</option>
+                        <option value="4">QR-code</option>
+                    </select>
+                    <textarea name="comment" placeholder="Комментарий" class="input"></textarea>
+                    <div class="order-print__action">
+                        <label class="order-print__file _icon-file" for="upload-photo">Прикрепить
+                            документ</label>
+                        <input style="opacity: 0; position: absolute; z-index: -1;" id="upload-photo" type="file"
+                            name="file">
+                        <button aria-label="отправить заполненую форму" type="submit"
+                            class="order-print__button button button-accent">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,231 @@
+// Заголовки, загальні БЕМ блоки та інше...
+#follower {
+    position: fixed;
+    pointer-events: none;
+    width: 24px;
+    height: 24px;
+    background-image: url('../img/cursor.svg');
+    background-size: cover;
+    z-index: 9999;
+}
+
+#eye {
+    position: fixed;
+    pointer-events: none;
+    min-width: 47px;
+    height: 47px;
+    background-image: url('../img/eye-icon.svg');
+    background-size: cover;
+    z-index: 9999;
+    display: none;
+}
+
+.plus::before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.minus::before {
+    position: absolute;
+    left: 50%;
+    top: -20%;
+    transform: translate(-50%, 0%);
+    font-size: x-small;
+}
+
+.color {
+    color: var(--inverse);
+}
+
+.img-1::before {
+    color: var(--inverse);
+    position: relative;
+    transform: translateY(-150%);
+    margin: 0 10px;
+}
+
+// Форматирование параграфа
+.body-text {
+    @include adaptiveValue('font-size', 30, 15, 0);
+    p {
+    }
+
+    span {
+        color: var(--accent);
+    }
+}
+// TODO adaptive
+
+//
+.section-title {
+    font-size: 48px;
+    line-height: 1.1041666667;
+    font-weight: 300;
+    text-transform: uppercase;
+    & span {
+        color: var(--accent);
+    }
+}
+
+.page-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    &__decor {
+        height: auto;
+        @media (min-width: 1920px) {
+            width: 70rem;
+        }
+        @include adaptiveValue('width', 1500, 800, 340, 1980);
+        @media (max-width: 600px) {
+            width: 41rem;
+        }
+    }
+}
+.elem {
+    animation-name: decor;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+// keyframes
+
+@keyframes decor {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+:where(html, body) {
+    overflow-x: hidden;
+}
+
+// /////////////////////////////// todo
+.menu {
+    position: absolute;
+    min-width: 90%;
+    bottom: 5svh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 51;
+    padding: 10px;
+    background-image: linear-gradient(120deg, #c4c4c4, #e8e8e8, #c7c7c7);
+    border-radius: 2px;
+    //
+
+    &__body {
+        border: 1px solid black;
+        border-radius: 1px;
+        padding: 0 10px;
+        background-color: rgba($color: #19191984, $alpha: 0.5);
+        backdrop-filter: hue-rotate(180deg) blur(15px) invert(5%);
+    }
+    &__list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+    &__item {
+        position: relative;
+        padding: 10px 0;
+        &::after {
+            content: '';
+            position: absolute;
+
+            width: 2px;
+            height: 40%;
+            background-color: black;
+        }
+
+        &:nth-child(n + 2) {
+            &::after {
+                left: 2px;
+            }
+        }
+        &:nth-child(1) {
+            &::after {
+                right: 2px;
+            }
+        }
+        &:nth-child(odd) {
+            &::after {
+                bottom: 0;
+            }
+        }
+        &:nth-child(even) {
+            &::after {
+                top: 0;
+            }
+        }
+    }
+    &__link {
+    }
+}
+
+.content-grid--decor {
+    z-index: -1;
+    height: 100svh;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    // grid-template-rows: auto;
+    // grid-template-columns: repeat(5, minmax(0, 1fr));
+    // grid-auto-columns: 1fr;
+    // display: grid;
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    padding-right: 0;
+    @media (any-hover: hover) {
+        padding-right: 17px;
+    }
+}
+.grid-background__item {
+    border-left: 1px solid rgba(65, 65, 65, 0.1);
+}
+
+.content-grid--decor > .breakout,
+.content-grid--decor > .content {
+    position: absolute;
+    height: 100vh;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    border-right: 1px dashed var(--decoration-50);
+    border-left: 1px dashed var(--decoration-50);
+}
+
+section {
+    position: relative;
+}
+.block {
+    &__content {
+        letter-spacing: 1px;
+        @include adaptiveValue('font-size', 18, 14);
+    }
+    &__more {
+        font-family: $thirdFontFamily;
+        font-size: rem(16);
+        color: var(--text-accent);
+    }
+}
+
+// speakers section
+@keyframes z-index-hack {
+    0%,
+    100% {
+        z-index: 1;
+    }
+}

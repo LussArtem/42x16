@@ -1,0 +1,204 @@
+//<BUTTONS (a.btn+tab)>
+// Сніппет (HTML): btn
+
+.button {
+    font-family: Accuratist;
+    display: flex;
+    min-height: 41px;
+    // border-radius: 100px;
+    @include adaptiveValue('font-size', 16, 20);
+    // font-size: 12px;
+    line-height: 1.4166666667;
+    transition: color 0.3s $ease-out-quad 0s, background-color 0.3s $ease-out-quad 0s;
+    text-align: center;
+    align-items: center;
+    &-inverse {
+        border-left: 1px solid var(--inverse);
+        border-top: 1px solid var(--inverse);
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: var(--accent);
+
+                border-left: 1px solid var(--accent);
+                border-top: 1px solid var(--accent);
+                color: #000;
+            }
+        }
+    }
+    &-one_color {
+        color: var(--const-color);
+        border: 1px solid var(--const-color);
+        @media (any-hover: hover) {
+            &:hover {
+                filter: drop-shadow(2px 4px 6px white);
+                background-color: var(--accent);
+                border: 1px solid var(--accent);
+                color: var(--const-color);
+            }
+        }
+    }
+    &-accent {
+        background-color: var(--accent);
+        border: 1px solid var(--accent);
+        color: #000;
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: var(--primary);
+                color: var(--accent);
+            }
+        }
+    }
+    &._fw {
+        width: 100%;
+    }
+}
+
+.button-soft {
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    text-shadow: none;
+
+    // This is what gives the trimmed corner effect.
+
+    transition: color 0.2s $ease-out-quad var(--d), background-color 0.2s $ease-out-quad var(--d);
+
+    --t: 0.3s;
+    --d: calc(var(--t) * 0.5);
+
+    &_inverse {
+        color: var(--text-inverse);
+
+        &__content {
+            position: relative;
+
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            text-shadow: none;
+            padding: 1em 1.75em;
+
+            color: var(--text-inverse);
+            background-color: var(--bg-primary);
+            transition: color 0.2s $ease-out-quad var(--d), background-color 0.2s $ease-out-quad var(--d);
+        }
+
+        &::after {
+            content: '';
+            background-color: var(--decoration-50);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            opacity: 0;
+            top: 0;
+            z-index: 1;
+            transition: opacity var(--t) ease var(--d);
+            box-shadow: 0 0 25px 0 var(--decoration-50);
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            transition: transform 0.5s $ease-out-sine 0s;
+
+            $c: var(--bg-inverse);
+            $o: rgba(0, 0, 0, 0);
+            background: linear-gradient(90deg, transparent 0%, $c 0%, $c 99%, $o 99%);
+            transform: scale3d(1.01, 1.015, 1) translate(-1px, -2px);
+        }
+
+        @media (any-hover: hover) {
+            &:is(:hover, :focus) {
+                .button-soft_inverse__content {
+                    background-color: var(--bg-secondary);
+                }
+                &::before {
+                    transform: translate(0, 0) scale3d(1, 1, 1);
+                }
+
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &_accent {
+        color: var(--text-secondary);
+
+        &__content {
+            position: relative;
+
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            text-shadow: none;
+            padding: 1em 1.75em;
+
+            color: var(--text-secondary);
+            background-color: var(--bg-accent);
+            // transition: color 0.2s $ease-out-quad 0, background-color 0.2s $ease-out-quad 0;
+            transition: color 0.2s $ease-out-quad var(--d), background-color 0.2s $ease-out-quad var(--d);
+        }
+
+        &::after {
+            content: '';
+            background-color: var(--decoration-50);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            opacity: 1;
+            z-index: 1;
+            transition: opacity var(--d) ease-in var(--d);
+            // transition: opacity var(--t) $ease-out-sine var(--d);
+            box-shadow: 0 0 25px 0 var(--decoration-50);
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            transition: transform var(--t) $ease-out-sine var(--d);
+            transform: translate(0, 0) scale3d(1, 1, 1);
+        }
+
+        @media (any-hover: hover) {
+            &:is(:hover, :focus) {
+                .button-soft_accent__content {
+                    color: var(--text-accent);
+                    background-color: var(--bg-primary);
+                }
+                &::before {
+                    $c: var(--bg-accent);
+                    $o: rgba(0, 0, 0, 0);
+                    background: linear-gradient(90deg, transparent 0%, $c 0%, $c 99%, $o 99%);
+                    transform: scale3d(1.01, 1.015, 1) translate(-1px, -2px);
+                }
+
+                &::after {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    &_centred {
+        margin: 0 auto;
+    }
+}

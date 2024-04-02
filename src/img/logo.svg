@@ -1,0 +1,10 @@
+<svg width="245" height="245" xmlns="http://www.w3.org/2000/svg" stroke="null" style="vector-effect: non-scaling-stroke;">
+ <g stroke="#00000">
+  <title stroke="null">invite</title>
+  <ellipse transform="rotate(-38.688228607177734 128.20782470703128,127.49209594726567) " stroke="#020202" ry="100" rx="100" id="svg_4" cy="127.492096" cx="128.207818" stroke-width="4" fill="white"/>
+  <ellipse transform="rotate(-38.688228607177734 86.25661468505864,93.57117462158203) " filter="url(#svg_2_blur)" stroke="#020202" ry="80" rx="80" id="svg_2" cy="93.571171" cx="86.256614" stroke-width="8" fill="#9f1a39"/>
+  <path stroke="#020202" transform="rotate(-76.02195739746094 186.61569213867188,78.62474060058594) " id="svg_60" d="m165.943424,47.678411c36.776808,0 41.344558,61.892658 41.344558,61.892658" fill-opacity="null" stroke-width="44" fill="#020202"/>
+  <path stroke="#020202" transform="rotate(-43.16685485839844 126.57360839843754,145.21511840820315) " id="svg_54" d="m54.928938,68.760681c127.458704,0 143.289319,152.908864 143.289319,152.908864" fill-opacity="null" stroke-width="40" fill="none"/>
+  <ellipse transform="rotate(-38.688228607177734 127.23220825195324,131.3945465087891) " stroke="#000000" ry="13.775003" rx="14.060608" id="svg_10" cy="131.394538" cx="127.232208" fill="#020202"/>
+ </g>
+</svg>

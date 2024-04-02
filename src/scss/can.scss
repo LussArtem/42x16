@@ -1,0 +1,117 @@
+.can {
+    position: relative;
+
+    &__column:nth-child(3n):nth-child(odd) {
+        margin-right: -1px;
+    }
+
+    &__column li a {
+        display: block;
+        position: relative;
+        line-height: 1.25;
+        text-transform: uppercase;
+        transition: all 0.5s ease 0s;
+        word-wrap: break-word;
+        z-index: 2;
+    }
+
+    &__column li a:not(:last-child) {
+        margin-bottom: 23px;
+    }
+
+    &__img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease 0s;
+        transform: translateY(15%);
+        z-index: -1;
+    }
+
+    &__img span {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: rgba(20, 20, 20, 0.01);
+        border: 1px solid var(--inverse);
+        backdrop-filter: blur(10px);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translate(50%, 50%);
+    }
+
+    &__img span img {
+        width: 220px;
+        height: auto;
+    }
+
+    &__img span::before {
+        font-size: 10px;
+        position: relative;
+        z-index: 2;
+        color: var(--primary);
+    }
+
+    &__img span::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: var(--accent);
+    }
+
+    &__txt {
+        animation: leftText 30s linear infinite;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(8deg);
+        background-color: var(--bg-inverse);
+        // @include adaptiveValue('transform:rotate', 40, 20);
+    }
+
+    &__body {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        position: relative;
+        filter: blur(3px);
+        z-index: 2;
+        &::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            display: block;
+            filter: blur(1px);
+            z-index: 49;
+            // background: var(--primary)
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &__column {
+        border: 1px solid var(--secondary);
+        position: relative;
+    }
+    &__column:not(:last-child) {
+        margin-right: -1px;
+    }
+}
+
+@media (max-width: 600px) {
+    .can__column:nth-child(n + 3) {
+        margin-top: -1px;
+    }
+}

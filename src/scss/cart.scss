@@ -1,0 +1,248 @@
+.cart {
+    position: relative;
+    z-index: 2;
+    &__body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 57px;
+    }
+
+    &__sliders {
+        min-width: 0;
+    }
+
+    &__title {
+        margin-top: -12px;
+        margin-bottom: 10px;
+        line-height: 1.04;
+        font-weight: 300;
+        text-transform: uppercase;
+        word-wrap: break-word;
+    }
+
+    &__description {
+        border-bottom: 1px solid var(--secondary);
+        margin-bottom: 23px;
+    }
+
+    &__description p {
+        font-size: 14px;
+        line-height: 1.4285714286;
+    }
+
+    &__label {
+        line-height: 1.8333333333;
+        text-transform: uppercase;
+        color: var(--secondary);
+    }
+
+    &__caption {
+        margin-bottom: 16px;
+    }
+
+    &__size {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+        padding-bottom: 20px;
+        margin-bottom: 22px;
+        border-bottom: 1px solid var(--secondary);
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    &__colors {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--secondary);
+        gap: 15px;
+
+        flex-wrap: wrap;
+    }
+
+    &__print {
+        width: 100%;
+        line-height: 1.4166666667;
+        justify-content: center;
+        text-transform: uppercase;
+    }
+
+    &__actions {
+        border-top: 1px solid var(--secondary);
+    }
+
+    & .swiper {
+        overflow: hidden;
+    }
+}
+
+.sliders-cart__slide {
+    position: relative;
+    width: 100%;
+    padding-bottom: 132%;
+}
+
+.sliders-cart__slide img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.subslider-cart {
+    max-width: 310px;
+}
+
+.subslider-cart__slide {
+    position: relative;
+    width: 100%;
+    height: 93px;
+}
+
+.subslider-cart__slide img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.prices-cart {
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+    gap: 15px;
+
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--secondary);
+    margin-bottom: 20px;
+}
+
+.prices-cart__quantity {
+    display: flex;
+
+    align-items: center;
+}
+
+.prices-cart__button {
+    line-height: 1.4285714286;
+}
+
+.prices-cart__item {
+    line-height: 1.04;
+    color: var(--accent);
+}
+
+.size-cart__list li {
+    border: 1px solid var(--inverse);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+    font-size: 12px;
+    line-height: 1.4166666667;
+    color: var(--accent);
+    font-family: $secondFontFamily;
+    text-transform: uppercase;
+    border-radius: 100px;
+}
+
+.colors-cart__list li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--inverse);
+    position: relative;
+}
+
+.colors-cart__list li::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+}
+
+.colors-cart__1::after {
+    background-color: #fff;
+}
+
+.colors-cart__2::after {
+    background: #9d5450;
+}
+
+.colors-cart__3::after {
+    background: #3d4896;
+}
+
+.colors-cart__4::after {
+    background: #5483c6;
+}
+
+.colors-cart__5::after {
+    background: #acacaf;
+}
+
+.colors-cart__6::after {
+    background: #d3574d;
+}
+
+.colors-cart__7::after {
+    background: #323232;
+}
+
+.colors-cart__8::after {
+    background: #70b481;
+}
+
+.actions-cart {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.actions-cart__button {
+    display: flex;
+
+    align-items: center;
+
+    column-gap: 22px;
+    line-height: 1.8333333333;
+    color: var(--secondary);
+    text-transform: uppercase;
+
+    transition: all 0.3s ease 0s;
+    text-align: left;
+}
+
+.actions-cart__button span {
+    text-decoration: underline;
+}
+
+.actions-cart__button::before {
+    font-size: 23px;
+    color: var(--accent);
+}

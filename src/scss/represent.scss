@@ -1,0 +1,11 @@
+.represent {
+    position: relative;
+    &__body {
+        @include adaptiveValue('margin-bottom', 50, 30);
+    }
+    &__text {
+        @include adaptiveValue('margin-bottom', 50, 20, 1440, 850);
+        @include adaptiveValue('text-indent', 30, 5, 1440, 850);
+        @include adaptiveValue('line-height', 60, 50);
+    }
+}

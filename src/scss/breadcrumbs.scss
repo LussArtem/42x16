@@ -1,0 +1,44 @@
+.breadcrumbs-catalog {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid var(--inverse);
+    border-bottom: 1px solid var(--inverse);
+    @include adaptiveValue('margin-bottom', 30, 20, 0);
+
+    &__list {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        & li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:not(:last-child) {
+                margin-right: 18px;
+                &::after {
+                    content: '';
+                    display: block;
+                    background: url('../img/icon/arrow-right.svg') right no-repeat;
+                    fill: var(--inverse);
+                    stroke: var(--inverse);
+                    width: 4px;
+                    height: 4px;
+                }
+            }
+            & a {
+                line-height: 1.4;
+                text-decoration: underline;
+                font-family: $secondFontFamily;
+                padding-right: 18px;
+            }
+        }
+        & :last-child {
+            a {
+                text-decoration: none !important;
+                color: var(--accent);
+            }
+        }
+    }
+}
