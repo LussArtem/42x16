@@ -4461,17 +4461,6 @@ section {
 .item-types:not(:has(.item-types__img img)) .item-types__title {
   margin-bottom: 100%;
 }
-.item-types:not(:has(.item-types__img img)) .item-types__img {
-  z-index: -1;
-  position: absolute;
-  top: -50%;
-  left: 0%;
-  width: 100%;
-  height: 200%;
-  background-position: center center;
-  background-size: cover;
-}
-
 .item-types__title {
   font-weight: 300;
   line-height: 1.25;
