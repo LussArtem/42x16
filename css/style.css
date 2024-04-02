@@ -3525,18 +3525,16 @@ section {
   -o-transition: all 500ms;
   transition: all 500ms;
 }
-.speakers-grid__body a:is(:hover, :focus) {
-  background-color: var(--accent);
-}
-.speakers-grid__body a:is(:hover, :focus) img {
-  scale: 1.2;
-  width: 300px;
-  height: 300px;
-  z-index: 2;
-}
-.speakers-grid__body a:not(:hover, :focus) img {
-  -webkit-animation: z-index-hack 500ms;
-          animation: z-index-hack 500ms;
+@media (any-hover: hover) {
+  .speakers-grid__body a:is(:hover, :focus) {
+    background-color: var(--accent);
+  }
+  .speakers-grid__body a:is(:hover, :focus) img {
+    scale: 1.2;
+    width: 300px;
+    height: 300px;
+    z-index: 2;
+  }
 }
 
 .speakers-grid__body li img {
