@@ -3586,12 +3586,14 @@ section {
           clip-path: polygon(75% 16%, 75% 56%, 71% 61%, 32% 61%, 32% 100%, 0 100%, 0 77%, 0 47%, 0 11%, 71% 11%);
 }
 
-.speakers-grid__body li:nth-child(3) a:is(:hover, :focus) img {
-  -webkit-transform: translate(25%, -25%);
-      -ms-transform: translate(25%, -25%);
-          transform: translate(25%, -25%);
-  -webkit-clip-path: polygon(100% 0, 100% 41%, 100% 69%, 100% 100%, 59% 100%, 0 100%, 0 77%, 0 47%, 0 0, 100% 0);
-          clip-path: polygon(100% 0, 100% 41%, 100% 69%, 100% 100%, 59% 100%, 0 100%, 0 77%, 0 47%, 0 0, 100% 0);
+@media (any-hover: hover) {
+  .speakers-grid__body li:nth-child(3) a:is(:hover, :focus) img {
+    -webkit-transform: translate(25%, -25%);
+        -ms-transform: translate(25%, -25%);
+            transform: translate(25%, -25%);
+    -webkit-clip-path: polygon(100% 0, 100% 41%, 100% 69%, 100% 100%, 59% 100%, 0 100%, 0 77%, 0 47%, 0 0, 100% 0);
+            clip-path: polygon(100% 0, 100% 41%, 100% 69%, 100% 100%, 59% 100%, 0 100%, 0 77%, 0 47%, 0 0, 100% 0);
+  }
 }
 
 .speakers-grid__body li:nth-child(4) img {
