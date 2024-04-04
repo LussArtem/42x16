@@ -2070,29 +2070,6 @@ body::after {
   padding: 1.25rem;
   border-radius: 0.3125rem;
   line-height: 1.5rem;
-  -webkit-transition: max-height 400ms ease-out, border 0ms 400ms linear;
-  -o-transition: max-height 400ms ease-out, border 0ms 400ms linear;
-  transition: max-height 400ms ease-out, border 0ms 400ms linear;
-  max-height: 0;
-}
-
-details[open] .spollers__body {
-  max-height: 800px; /* Set a max-height value enough to show all the content */
-  -webkit-transition: max-height 400ms ease-out, border 0ms linear;
-  -o-transition: max-height 400ms ease-out, border 0ms linear;
-  transition: max-height 400ms ease-out, border 0ms linear;
-}
-
-details[open] .spollers__item::before {
-  -webkit-transform: translateX(-75%) rotate(-40deg);
-      -ms-transform: translateX(-75%) rotate(-40deg);
-          transform: translateX(-75%) rotate(-40deg);
-}
-
-details[open] .spollers__item::after {
-  -webkit-transform: rotate(40deg);
-      -ms-transform: rotate(40deg);
-          transform: rotate(40deg);
 }
 
 .tabs__navigation {
