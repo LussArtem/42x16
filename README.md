@@ -8,7 +8,7 @@
 
 -   Отправка на gh-pages `npm run deployGH`
 
-Страница проекта https://lussartem.github.io/42x16/
+Страница проекта https://lussartem.github.io/42x16/home.html
 
 # 42/16
 
