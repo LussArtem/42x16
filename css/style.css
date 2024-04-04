@@ -2039,11 +2039,11 @@ body::after {
   background-color: var(--text-accent);
   height: 2px;
   width: 15px;
-  -webkit-transition: -webkit-transform 0.5s ease 0s;
-  transition: -webkit-transform 0.5s ease 0s;
-  -o-transition: transform 0.5s ease 0s;
-  transition: transform 0.5s ease 0s;
-  transition: transform 0.5s ease 0s, -webkit-transform 0.5s ease 0s;
+  -webkit-transition: rotate 0.5s ease 0s, -webkit-transform 0.5s ease 0s;
+  transition: rotate 0.5s ease 0s, -webkit-transform 0.5s ease 0s;
+  -o-transition: transform 0.5s ease 0s, rotate 0.5s ease 0s;
+  transition: transform 0.5s ease 0s, rotate 0.5s ease 0s;
+  transition: transform 0.5s ease 0s, rotate 0.5s ease 0s, -webkit-transform 0.5s ease 0s;
 }
 ._spoller-init .spollers__title::before {
   -webkit-transform: translate(-75%, -50%) rotate(40deg);
@@ -2070,6 +2070,25 @@ body::after {
   padding: 1.25rem;
   border-radius: 0.3125rem;
   line-height: 1.5rem;
+  -webkit-transition: max-height 400ms ease-out, border 0ms 400ms linear;
+  -o-transition: max-height 400ms ease-out, border 0ms 400ms linear;
+  transition: max-height 400ms ease-out, border 0ms 400ms linear;
+  max-height: 0;
+}
+
+details[open] + div.spollers__body {
+  max-height: 800px; /* Set a max-height value enough to show all the content */
+  border-color: #888;
+  -webkit-transition: max-height 400ms ease-out, border 0ms linear;
+  -o-transition: max-height 400ms ease-out, border 0ms linear;
+  transition: max-height 400ms ease-out, border 0ms linear;
+}
+
+details[open] .spollers__item:is(::before, ::after) {
+  rotate: 90deg;
+  -webkit-transition: rotate 200ms ease-out;
+  -o-transition: rotate 200ms ease-out;
+  transition: rotate 200ms ease-out;
 }
 
 .tabs__navigation {
