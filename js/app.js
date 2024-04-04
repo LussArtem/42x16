@@ -1215,7 +1215,7 @@
                     showMoreButton = Array.from(showMoreButton).filter((item => item.closest("[data-showmore]") === showMoreBlock))[0];
                     const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
                     if (matchMedia.matches || !matchMedia) if (hiddenHeight < getOriginalHeight(showMoreContent)) {
-                        _slideUp(showMoreContent, 0, showMoreBlock.classList.contains("_showmore-active") ? getOriginalHeight(showMoreContent) : hiddenHeight);
+                        _slideUp(showMoreContent, 0, hiddenHeight);
                         showMoreButton.hidden = false;
                     } else {
                         _slideDown(showMoreContent, 0, hiddenHeight);
