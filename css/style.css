@@ -2109,7 +2109,7 @@ body::after {
   transition: --c-0 0.5s;
 }
 ._showmore-active [data-showmore-content] {
-  --c-0: 98%;
+  --c-0: 99%;
 }
 
 [data-showmore-button] span:last-child {
