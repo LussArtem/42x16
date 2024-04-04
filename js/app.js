@@ -6050,12 +6050,13 @@
                 slidesPerView: 1,
                 spaceBetween: 1,
                 autoHeight: true,
+                freeMode: true,
                 pagination: {
                     el: ".types__scrollbar",
                     type: "progressbar"
                 },
                 breakpoints: {
-                    475: {
+                    300: {
                         slidesPerView: 1.5
                     },
                     768: {
