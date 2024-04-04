@@ -270,25 +270,40 @@ export function spollers() {
         }
         function setSpollerAction(e) {
             const el = e.target
-            if (el.closest('summary') && el.closest('[data-spollers]')) {
-                if (el.closest('[data-spollers]').classList.contains('_spoller-init')) {
-                    const spollerTitle = el.closest('summary')
-                    const spollerBlock = spollerTitle.closest('details')
-                    const spollersBlock = spollerTitle.closest('[data-spollers]')
-                    const oneSpoller = spollersBlock.hasAttribute('data-one-spoller')
-                    const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500
-                    if (!spollersBlock.querySelectorAll('._slide').length) {
-                        if (oneSpoller && !spollerBlock.open) {
-                            hideSpollersBody(spollersBlock)
-                        }
-                        spollerTitle.classList.toggle('_spoller-active')
-                        _slideToggle(spollerTitle.nextElementSibling, spollerSpeed)
+            if (el.closest('summary') && el.closest('[data-spollers]').classList.contains('_spoller-init')) {
+                const spollerTitle = el.closest('summary')
+                const spollerBlock = spollerTitle.closest('details')
+                const spollersBlock = spollerTitle.closest('[data-spollers]')
+                const oneSpoller = spollersBlock.hasAttribute('data-one-spoller')
+                const scrollSpoller = spollerBlock.hasAttribute('data-spoller-scroll')
+                const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500
+                if (!spollersBlock.querySelectorAll('._slide').length) {
+                    if (oneSpoller && !spollerBlock.open) {
+                        hideSpollersBody(spollersBlock)
+                    }
 
-                        !spollerBlock.open
-                            ? (spollerBlock.open = true)
-                            : setTimeout(() => {
-                                  spollerBlock.open = false
-                              }, spollerSpeed)
+                    !spollerBlock.open
+                        ? (spollerBlock.open = true)
+                        : setTimeout(() => {
+                              spollerBlock.open = false
+                          }, spollerSpeed)
+
+                    spollerTitle.classList.toggle('_spoller-active')
+                    _slideToggle(spollerTitle.nextElementSibling, spollerSpeed)
+
+                    if (scrollSpoller && spollerTitle.classList.contains('_spoller-active')) {
+                        const scrollSpollerValue = spollerBlock.dataset.spollerScroll
+                        const scrollSpollerOffset = +scrollSpollerValue ? +scrollSpollerValue : 0
+                        const scrollSpollerNoHeader = spollerBlock.hasAttribute('data-spoller-scroll-noheader')
+                            ? document.querySelector('.header').offsetHeight
+                            : 0
+
+                        //setTimeout(() => {
+                        window.scrollTo({
+                            top: spollerBlock.offsetTop - (scrollSpollerOffset + scrollSpollerNoHeader),
+                            behavior: 'smooth',
+                        })
+                        //}, spollerSpeed);
                     }
                 }
                 e.preventDefault()
@@ -480,21 +495,21 @@ export function showMore() {
         let showMoreBlocksRegular
         let mdQueriesArray
         if (showMoreBlocks.length) {
-            // Отримання звичайних об'єктів
+            // Получение обычных объектов
             showMoreBlocksRegular = Array.from(showMoreBlocks).filter(function (item, index, self) {
                 return !item.dataset.showmoreMedia
             })
-            // Ініціалізація звичайних об'єктів
+            // Инициализация обычных объектов
             showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null
 
             document.addEventListener('click', showMoreActions)
             window.addEventListener('resize', showMoreActions)
 
-            // Отримання об'єктів з медіа-запитами
+            // Получение объектов с медиа запросами
             mdQueriesArray = dataMediaQueries(showMoreBlocks, 'showmoreMedia')
             if (mdQueriesArray && mdQueriesArray.length) {
                 mdQueriesArray.forEach((mdQueriesItem) => {
-                    // Подія
+                    // Событие
                     mdQueriesItem.matchMedia.addEventListener('change', function () {
                         initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia)
                     })
@@ -521,11 +536,7 @@ export function showMore() {
             const hiddenHeight = getHeight(showMoreBlock, showMoreContent)
             if (matchMedia.matches || !matchMedia) {
                 if (hiddenHeight < getOriginalHeight(showMoreContent)) {
-                    _slideUp(
-                        showMoreContent,
-                        0,
-                        showMoreBlock.classList.contains('_showmore-active') ? getOriginalHeight(showMoreContent) : hiddenHeight
-                    )
+                    _slideUp(showMoreContent, 0, hiddenHeight)
                     showMoreButton.hidden = false
                 } else {
                     _slideDown(showMoreContent, 0, hiddenHeight)
