@@ -54,6 +54,20 @@ a {
 ul li {
     list-style: none;
 }
+details > summary {
+    cursor: pointer;
+    list-style: none !important;
+}
+summary {
+    list-style-type: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+summary::marker {
+    content: '';
+}
 img {
     vertical-align: top;
 }
