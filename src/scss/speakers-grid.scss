@@ -76,19 +76,33 @@
         transition: all 500ms;
     }
 
-    a:is(:hover, :focus) {
-        background-color: var(--accent);
+    // a:is(:hover, :focus) {
+    //     background-color: var(--accent);
 
-        img {
-            scale: 1.2;
-            width: 300px;
-            height: 300px;
-            z-index: 2;
+    //     img {
+    //         scale: 1.2;
+    //         width: 300px;
+    //         height: 300px;
+    //         z-index: 2;
+    //     }
+    // }
+
+    // a:not(:hover, :focus) img {
+    //     animation: z-index-hack 500ms;
+    // }
+
+    a {
+        @media (any-hover: hover) {
+            &:is(:hover, :focus) {
+                background-color: var(--accent);
+                img {
+                    scale: 1.2;
+                    width: 300px;
+                    height: 300px;
+                    z-index: 2;
+                }
+            }
         }
-    }
-
-    a:not(:hover, :focus) img {
-        animation: z-index-hack 500ms;
     }
 }
 
@@ -122,10 +136,14 @@
     grid-row: 4 / 5;
     clip-path: polygon(75% 16%, 75% 56%, 71% 61%, 32% 61%, 32% 100%, 0 100%, 0 77%, 0 47%, 0 11%, 71% 11%);
 }
-.speakers-grid__body li:nth-child(3) a:is(:hover, :focus) {
-    img {
-        transform: translate(25%, -25%);
-        clip-path: polygon(100% 0, 100% 41%, 100% 69%, 100% 100%, 59% 100%, 0 100%, 0 77%, 0 47%, 0 0, 100% 0);
+.speakers-grid__body li:nth-child(3) a {
+    @media (any-hover: hover) {
+        &:is(:hover, :focus) {
+            img {
+                transform: translate(25%, -25%);
+                clip-path: polygon(100% 0, 100% 41%, 100% 69%, 100% 100%, 59% 100%, 0 100%, 0 77%, 0 47%, 0 0, 100% 0);
+            }
+        }
     }
 }
 

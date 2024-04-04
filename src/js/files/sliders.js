@@ -38,9 +38,10 @@ function initSliders() {
             spaceBetween: 1,
             autoHeight: true,
             // speed: 800,
-            // freeMode: true,
+            freeMode: true,
             pagination: {
                 el: '.types__scrollbar',
+                // type: 'fraction',
                 type: 'progressbar',
             },
             // scrollbar: {
@@ -50,7 +51,7 @@ function initSliders() {
             //     // draggable: true,
             // },
             breakpoints: {
-                475: {
+                300: {
                     slidesPerView: 1.5,
                 },
                 768: {
