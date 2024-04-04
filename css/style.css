@@ -2097,25 +2097,6 @@ body::after {
   padding-top: 10px;
 }
 
-@property --c-0 {
-  syntax: "<length-percentage>";
-  initial-value: 0%;
-  inherits: false;
-}
-[data-showmore-content] {
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)));
-  -webkit-mask-image: linear-gradient(to bottom, rgb(0, 0, 0) var(--c-0), rgba(0, 0, 0, 0));
-          mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)));
-          mask-image: linear-gradient(to bottom, rgb(0, 0, 0) var(--c-0), rgba(0, 0, 0, 0));
-  transition: --c-0 0.5s;
-}
-[data-showmore-content]._slide {
-  transition: --c-0 0.5s;
-}
-._showmore-active [data-showmore-content] {
-  --c-0: 99%;
-}
-
 [data-showmore-button] span:last-child {
   display: none;
 }
@@ -2536,7 +2517,7 @@ section {
   }
 }
 .header {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
   width: 100%;
