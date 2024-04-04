@@ -2093,6 +2093,10 @@ body::after {
   margin-top: 10px;
 }
 
+[data-showmore-button] {
+  padding-top: 10px;
+}
+
 @property --c-0 {
   syntax: "<length-percentage>";
   initial-value: 0%;
