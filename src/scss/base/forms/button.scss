@@ -60,8 +60,26 @@
     display: flex;
     align-items: center;
     text-shadow: none;
+    border: none;
+    border-radius: 0;
+    display: inline-block;
+    color: black;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    min-width: 48px;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    background: none;
+    position: relative;
+    z-index: 1;
 
     // This is what gives the trimmed corner effect.
+    $s: var(--bg-inverse);
+    $c: var(--bg-inverse);
+    $o: rgba(0, 0, 0, 0);
 
     transition: color 0.2s $ease-out-quad var(--d), background-color 0.2s $ease-out-quad var(--d);
 
@@ -73,13 +91,17 @@
 
         &__content {
             position: relative;
+            font-family: $secondFontFamily;
 
             z-index: 3;
             display: flex;
             align-items: center;
             text-shadow: none;
-            padding: 1em 1.75em;
+            // padding: 1em 1.75em;
+            padding: 1rem 1.75rem;
 
+            @include adaptiveValue('padding-right', 10, 17.5);
+            @include adaptiveValue('padding-left', 10, 17.5);
             color: var(--text-inverse);
             background-color: var(--bg-primary);
             transition: color 0.2s $ease-out-quad var(--d), background-color 0.2s $ease-out-quad var(--d);
@@ -94,7 +116,7 @@
             left: 0;
             opacity: 0;
             top: 0;
-            z-index: 1;
+            z-index: -1;
             transition: opacity var(--t) ease var(--d);
             box-shadow: 0 0 25px 0 var(--decoration-50);
         }
@@ -107,12 +129,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            z-index: -1;
             transition: transform 0.5s $ease-out-sine 0s;
 
-            $c: var(--bg-inverse);
-            $o: rgba(0, 0, 0, 0);
-            background: linear-gradient(90deg, transparent 0%, $c 0%, $c 99%, $o 99%);
+            background: linear-gradient(90deg, transparent 0%, $s 0%, $c 99%, $o 99%);
             transform: scale3d(1.01, 1.015, 1) translate(-1px, -2px);
         }
 

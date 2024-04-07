@@ -40,7 +40,7 @@
             background-color: var(--text-accent);
             height: 2px;
             width: 15px;
-            transition: transform 0.5s ease 0s;
+            transition: transform 0.5s ease 0s, rotate 0.5s ease 0s;
         }
         &::before {
             transform: translate(-75%, -50%) rotate(40deg);
@@ -97,5 +97,20 @@
     padding: rem(20);
     border-radius: rem(5);
     line-height: 1.5rem;
+
+    // transition: max-height 400ms ease-out, border 0ms 400ms linear;
+    // max-height: 0;
     // border: 1px solid #eee;
 }
+
+// details[open] .spollers__body {
+//     max-height: 800px; /* Set a max-height value enough to show all the content */
+//     transition: max-height 400ms ease-out, border 0ms linear;
+// }
+
+// details[open] .spollers__item::before {
+//     transform: translateX(-75%) rotate(-40deg);
+// }
+// details[open] .spollers__item::after {
+//     transform: rotate(40deg);
+// }

@@ -15,10 +15,16 @@
     background-color: var(--bg-primary);
     border-top-left-radius: var(--border-radius-1);
     border-bottom-left-radius: var(--border-radius-1);
+    border-left: 1px dashed;
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+    // border-image: linear-gradient(90deg, rgba(62, 182, 64, 0.35) 0%, rgba(62, 182, 64, 1) 100%);
+    // border-image: linear-gradient(to left, red, rgba(0, 0, 0, 0)) 1 100%;
+    // border-image-slice: 1;
+
     border-left: 1px dashed var(--decoration-50);
     border-top: 1px dashed var(--decoration-50);
     border-bottom: 1px dashed var(--decoration-50);
-    padding: 1.5rem 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,17 +32,26 @@
     gap: 20px;
     padding: 1.5rem 0.5rem;
 
+    &:has(.button-soft:hover) {
+    }
+
     &__nav {
         overflow-x: auto;
+        overflow-y: clip;
+        // touch-action: pan-x;
+        // border-top: 1px dashed linear-gradient(90deg, rgba(62, 182, 64, 0.35) 0%, rgba(62, 182, 64, 1) 100%);
+        // border-image: linear-gradient(to bottom right, red, rgba(0, 0, 0, 0)) 1 100%;
     }
 
     &__list {
         display: flex;
         align-items: center;
         column-gap: 13px;
+        margin-right: 7px;
 
         & li {
             white-space: nowrap;
+            margin: 5px 0 0 5px;
             &:not(._tab-active) {
                 & button {
                     @media (any-hover: hover) {
@@ -46,77 +61,40 @@
                     }
                 }
             }
-
-            a,
-            button,
-            summary {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 41px;
-                border-left: 1px solid var(--inverse);
-                border-top: 1px solid var(--inverse);
-                font-family: $secondFontFamily;
-                font-weight: bold;
-                text-align: center;
-                padding-top: 5px;
-                padding-bottom: 2px;
-
-                transition: border-color 0.3s ease 0s, background-color 0.3s ease 0s;
-
-                @media (min-width: $xz) {
-                    padding-left: 2.0625rem;
-                    padding-right: 2.0625rem;
-                }
-                @media (max-width: em(20)) {
-                    padding-left: 0.9375rem;
-                    padding-right: 0.9375rem;
-                }
-                @include adaptiveValue('padding-left', 33, 15, 320, 1560);
-                @include adaptiveValue('padding-right', 33, 15, 320, 1560);
-                // media.scss 2168--line
-            }
         }
     }
 
     &__item {
-        white-space: nowrap;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 41px;
-        // border-radius: 100px;
-        border-left: 1px solid var(--inverse);
-        border-top: 1px solid var(--inverse);
-        // font-size: 12px;
-        // line-height: 1.4166666667;
-        font-family: $thirdFontFamily;
-        font-weight: 100;
-        text-align: center;
-        padding-top: 5px;
-        padding-bottom: 2px;
-
-        transition: border-color 0.3s ease 0s, background-color 0.3s ease 0s;
-        @media (min-width: $xz) {
-            padding-left: 2.0625rem;
-            padding-right: 2.0625rem;
-        }
-        @media (max-width: em(20)) {
-            padding-left: 0.9375rem;
-            padding-right: 0.9375rem;
-        }
-        @include adaptiveValue('padding-left', 33, 15, 320, 1560);
-        @include adaptiveValue('padding-right', 33, 15, 320, 1560);
         // media.scss 2168--line
     }
-    & ._tab-active a,
-    ._tab-active button {
-        background-color: var(--accent);
-        border-top: 1px solid var(--accent);
-        border-left: 1px solid var(--accent);
-        color: #000;
-        cursor: no-drop;
+
+    & .button-soft span {
+        @media (any-hover: hover) {
+            &:is(:hover, :focus) {
+                background-color: var(--bg-accent);
+            }
+        }
+    }
+    & ._tab-active .button-soft {
+        &::before {
+            --bg-inverse: var(--bg-primary);
+        }
+        &::after {
+            opacity: 0;
+        }
+
+        & span {
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            cursor: no-drop;
+            @media (any-hover: hover) {
+                &:is(:hover, :focus) {
+                    &::before {
+                        transform: unset;
+                    }
+                }
+            }
+        }
     }
 }
 .block-price {
