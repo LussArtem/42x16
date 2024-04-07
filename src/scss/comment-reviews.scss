@@ -25,6 +25,8 @@
     border-bottom: 1px dashed var(--decoration-50);
     @media screen and (max-width: 700px) {
         grid-template-columns: 1fr;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
     }
 
     // container: box / size;
@@ -34,7 +36,8 @@
     background-color: var(--bg-primary);
     border-bottom: 1px dashed var(--decoration-50);
     @media screen and (max-width: 700px) {
-        padding-top: 1rem;
+        // padding-top: 1rem;
+        border-right: 1px dashed var(--decoration-50);
     }
 
     // border-top: 1px solid var(--inverse);
@@ -55,7 +58,7 @@
 }
 
 .comment-reviews p {
-    @include adaptiveValue('font-size', 20, 14);
+    @include adaptiveValue('font-size', 18, 16);
     line-height: 1.4285714286;
     font-family: $secondFontFamily;
     font-weight: bold;

@@ -74,6 +74,11 @@
         border-radius: 0.5rem;
 
         transition: all 500ms;
+        filter: brightness(1.2) contrast(0.8);
+    }
+
+    .light & img {
+        filter: brightness(1) contrast(1.2);
     }
 
     // a:is(:hover, :focus) {

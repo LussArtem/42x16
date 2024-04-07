@@ -1,6 +1,7 @@
 //====================================================================================================
 .header {
-    position: absolute;
+    // position: absolute;
+    position: relative;
     left: 0;
     top: 0;
     width: 100%;
@@ -45,6 +46,10 @@
 
     &__logo img {
         width: 94px;
+        height: auto;
+    }
+    &__logo svg {
+        width: 70px;
         height: auto;
     }
 
@@ -152,7 +157,7 @@
     display: none;
 }
 ._icon-night {
-    color: var(--bg-primary);
+    color: var(--bg-inverse);
 }
 ._icon-sun {
     color: var(--bg-accent);
